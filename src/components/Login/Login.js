@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classes from "./Login.module.css";
+import Button from "../UI/Button/Button";
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -34,7 +35,7 @@ const Login = (props) => {
         value={enteredPassword}
         onChange={passwordChangeHandler}
       />
-      <button type="submit">Login</button>
+      <Button type="submit">Login</Button>
     </form>
   );
 };
