@@ -1,0 +1,22 @@
+plugins:
+  #https://github.com/import-js/eslint-plugin-import
+  - import
+env:
+  browser: true
+  node: true
+  es2021: true
+extends:
+  - airbnb-base
+parserOptions:
+  ecmaVersion: 13
+  sourceType: module
+"overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "no-console": "off",
+        "import/extensions": "off",
+        "no-param-reassign": ["error", { "props": false }],
+      }
+    }
+  ]
