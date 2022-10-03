@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import Card from "../UI/Card/Card";
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -20,23 +21,25 @@ const Login = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <label htmlFor="email">E-Mail</label>
-      <input
-        type="email"
-        id="email"
-        value={enteredEmail}
-        onChange={emailChangeHandler}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        value={enteredPassword}
-        onChange={passwordChangeHandler}
-      />
-      <Button type="submit">Login</Button>
-    </form>
+    <Card>
+      <form onSubmit={submitHandler}>
+        <label htmlFor="email">E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          value={enteredEmail}
+          onChange={emailChangeHandler}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          value={enteredPassword}
+          onChange={passwordChangeHandler}
+        />
+        <Button type="submit">Login</Button>
+      </form>
+    </Card>
   );
 };
 
