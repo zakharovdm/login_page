@@ -2,6 +2,7 @@ import { useState, Fragment } from "react";
 
 import Login from "./components/Login/Login";
 import MainHeader from "./components/MainHeader/MainHeader";
+import Home from "./components/Home/Home";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +20,8 @@ const App = () => {
     <Fragment>
       <MainHeader isAuthenticated={isLoggedIn} isLogout={logoutHandler} />
       <main>
-        <Login onLogin={logginHandler} />
+        {!isLoggedIn && <Login onLogin={logginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
     </Fragment>
   );
