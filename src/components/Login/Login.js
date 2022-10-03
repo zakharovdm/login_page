@@ -21,23 +21,29 @@ const Login = (props) => {
   };
 
   return (
-    <Card>
+    <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <label htmlFor="email">E-Mail</label>
-        <input
-          type="email"
-          id="email"
-          value={enteredEmail}
-          onChange={emailChangeHandler}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={enteredPassword}
-          onChange={passwordChangeHandler}
-        />
-        <Button type="submit">Login</Button>
+        <div className={classes.control}>
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            value={enteredEmail}
+            onChange={emailChangeHandler}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={enteredPassword}
+            onChange={passwordChangeHandler}
+          />
+        </div>
+        <div className={classes.actions}>
+          <Button type="submit">Login</Button>
+        </div>
       </form>
     </Card>
   );
