@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
@@ -10,20 +10,18 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  useEffect(() => {
+    setFormIsValid(
+      enteredEmail.includes("@") && enteredPassword.trim().length > 6
+    );
+  }, [enteredEmail, enteredPassword]);
+
   const emailChangeHandler = (evt) => {
     setEnteredEmail(evt.target.value);
-
-    setFormIsValid(
-      evt.target.value.trim().includes("@") && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler = (evt) => {
     setEnteredPassword(evt.target.value);
-
-    setFormIsValid(
-      evt.target.value.trim().length > 6 && enteredEmail.trim().includes("@")
-    );
   };
 
   const submitHandler = (evt) => {
@@ -56,9 +54,11 @@ const Login = (props) => {
             onBlur={emailValidHandler}
           />
         </div>
-        <div className={`${classes.control} ${
+        <div
+          className={`${classes.control} ${
             passwordIsValid === false ? classes.invalid : ""
-          }`}>
+          }`}
+        >
           <label htmlFor="password">Password</label>
           <input
             type="password"
