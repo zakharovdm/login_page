@@ -1,6 +1,7 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 
 import Login from "./components/Login/Login";
+import AuthContext from "./store/auth-context";
 import MainHeader from "./components/MainHeader/MainHeader";
 import Home from "./components/Home/Home";
 
@@ -26,13 +27,13 @@ const App = () => {
   };
 
   return (
-    <Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} isLogout={logoutHandler} />
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
+      <MainHeader isLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={logginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </Fragment>
+    </AuthContext.Provider>
   );
 };
 
